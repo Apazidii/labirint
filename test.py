@@ -1,27 +1,15 @@
 
-from PIL import Image, ImageDraw #Подключим необходимые библиотеки.
+from graphics import *
 
+win = GraphWin("Окно для графики", 1010,1110)
+image = "map2.png"
+myImage = Image(Point(1010/2-4,1110/2-4),image)
+myImage.draw(win)
+c = Rectangle(Point(209,109),Point(297,893))
+#c = Rectangle(Point(4,4),Point(297,893))
+c.setFill("Green")
 
-image = Image.open("lab.jpg") #Открываем изображение.
-draw = ImageDraw.Draw(image) #Создаем инструмент для рисования.
-width = image.size[0] #Определяем ширину.
-height = image.size[1] #Определяем высоту.
-pix = image.load() #Выгружаем значения пикселей.
-k =1
-st = 120
+c.draw(win)
 
-for i in range(st,height-210):
-
-    for j in range(st,width):
-        if k % 2 ==0:
-            if (i - st) % 64 == 0 or i == st:
-                pix[j,i]=(255,0,0)
-                k+=1
-        else:
-            if (i - st) % 22 == 0 or i == st:
-                pix[j,i]=(255,0,0)
-                k+=1
-        if (j - st) % 64 == 0 or j == st:
-
-            pix[j,i]=(255,0,0)
-image.show()
+win.getMouse()
+win.close()
